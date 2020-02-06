@@ -55,7 +55,6 @@ def RR(t, quantum):
                 processStartTime[processQueue[0][2]] = 0
                 answerTime[processQueue[0][2]] = 0
 
-
         for key in answerTime:
             
             if key == processQueue[0][2]:
@@ -68,7 +67,7 @@ def RR(t, quantum):
                         waitingTime[key]
                     else:
                         waitingTime[key] += 1
-                
+
                 else:
                     waitingTime[key] = answerTime[key] + 1                
 
@@ -86,11 +85,9 @@ def RR(t, quantum):
 
         if quantumTimer == quantum or processQueue[0][1] == 0:
             if processQueue[0][1] == 0:
-                returnTime += cpuTime - processStartTime[processQueue[0][2]]
+                returnTime += cpuTime - processQueue[0][0][0]
                 deadProcesses[processQueue[0][2]] = 1
                 processQueue.pop(0)
-
-
 
             else:
                 currentProcess = processQueue[0]
@@ -98,7 +95,6 @@ def RR(t, quantum):
                 processQueue.append(currentProcess)
 
             quantumTimer = 0
-
         
         cpuTime += 1
         quantumTimer += 1
