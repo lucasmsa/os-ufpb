@@ -41,7 +41,7 @@ def RR(t, quantum):
 
     processQueue.append(process[0])
 
-    while len(processQueue):
+    while len(deadProcesses) < len(t):
 
         key = processQueue[0][2]
 
@@ -110,7 +110,7 @@ def SJF(t):
 
     process, waitingTime, returnTime  = [], float(t[0][0]), float(t[0][0]) 
     answerTime, processQueue, cpuTime = float(t[0][0]), [], 0
-    startingTime, lastProcessTime = [], 0
+    startingTime, lastProcessTime, deadProcesses = [], 0, 0
 
     for p in t:
         data = p
@@ -119,7 +119,7 @@ def SJF(t):
 
     processQueue.append(process[0])
 
-    while len(processQueue):
+    while deadProcesses < len(t):
 
         if processQueue[0][1] - lastProcessTime == 0:
 
@@ -127,6 +127,7 @@ def SJF(t):
             answerTime += cpuTime - processQueue[0][1] - processQueue[0][0]
             returnTime += cpuTime - processQueue[0][0]
 
+            deadProcesses += 1
             processQueue.pop(0)
             lastProcessTime = 0
         
