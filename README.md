@@ -1,4 +1,4 @@
-<h2>First Project- CPU Scheduling algorithms:</h2>
+<h2>First Project - CPU Scheduling algorithms:</h2>
 
 <ul>
   <li> RR
@@ -8,7 +8,7 @@
 
 <hr>
 
-<h2>Second Project- Page Replacement Algorithms</h2>
+<h2>Second Project - Page Replacement Algorithms</h2>
 
 <ul>
   <li> FIFO
