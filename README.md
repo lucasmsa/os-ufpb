@@ -1,5 +1,3 @@
-# SO
-
 <h2>First Project- CPU Scheduling algorithms:</h2>
 
 <ul>
