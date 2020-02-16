@@ -1,4 +1,4 @@
-<h2>First Project - CPU Scheduling algorithms:</h2>
+<h2>First Project - CPU Scheduling Algorithms</h2>
 
 <ul>
   
