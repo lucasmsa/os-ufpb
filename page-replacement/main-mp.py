@@ -70,12 +70,16 @@ def OTM(f, d):
     curList = []
     missingPages = 0
     dictMax = {}
+    dictFifo = {}
+    oneElement = {}
 
     for i in range(0, len(d), 1):
         
         if d[i] not in curList:
+
             if len(curList) < f:
                 curList.append(d[i])
+                dictFifo[d[i]] = 0
             
             else:
                 itemsForward = d[i:len(d)]
@@ -90,21 +94,40 @@ def OTM(f, d):
 
                     for e in curList:
                         if e not in dictMax:
-                            oldIndex = curList.index(e)
-                            break
+                            oneElement[e] = 0
+
+
+                    if len(oneElement) == 1:
+                        oldIndex = curList.index(oneElement[list(oneElement.keys())[0]])
+
+                    else:
+
+                        max_val = max(dictFifo.values())
+                        max_key = getKey(max_val, dictFifo)
+                                        
+                        oldIndex = curList.index(max_key)
                 
                 else:
                     max_val = max(dictMax.values())
                     max_key = getKey(max_val, dictMax)
+                    
                     oldIndex = curList.index(max_key)
 
+
+                dictFifo[curList[oldIndex]] = 0
                 curList[oldIndex] = d[i]
-                
+                dictFifo[d[i]] = 0
+    
             missingPages += 1
             dictMax.clear()
-
+            oneElement.clear()
+            
         else:
             pass
+        
+        for item in dictFifo:
+                if item in curList:
+                    dictFifo[item] += 1
 
     return footer(missingPages, "OTM")
 
